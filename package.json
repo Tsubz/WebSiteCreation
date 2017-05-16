@@ -1,0 +1,27 @@
+{
+  "name": "website-creation",
+  "version": "0.0.1",
+  "description": "My first server test",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tsubz/WebSiteCreation.git"
+  },
+  "keywords": [
+    "Test",
+    "app",
+    "js"
+  ],
+  "author": "Marc-Antoine",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tsubz/WebSiteCreation/issues"
+  },
+  "homepage": "https://github.com/Tsubz/WebSiteCreation#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
