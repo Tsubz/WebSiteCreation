@@ -47,3 +47,4 @@ Temporary Items
 .apdisk
 
 #node-module
+node_modules/*
