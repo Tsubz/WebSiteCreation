@@ -12,3 +12,16 @@ font-family: 'Poppins', sans-serif;
 font-family: 'Marcellus', serif;
 font-family: 'Montserrat Subrayada', sans-serif;
 font-family: 'Poiret One', cursive;
+
+
+Alternate LOGO:
+<!-- Logo / Title -->
+          <div class="col-xs-12 col-md-3">
+            <div>
+            <h1 style="font-size: 50px; vertical-align: middle;">\\</h1>
+            </div>
+            <div>
+            <h1>Adeline <br>Betton</h1>
+            </div>
+          </div>
+<!-- Logo / Title END -->
