@@ -26,7 +26,7 @@ h3, h4 {
 }
 
 .page_header, {
-
+ /* No style */
 }
 
 .menu_ul {
@@ -40,3 +40,39 @@ h3, h4 {
     margin-right: 20px;
     margin-bottom: 20px;
 }
+
+.hr-menu {
+    border-width: 20px;
+    margin-bottom: 30px;
+}
+
+.titleline {
+font-family: 'Poppins', sans-serif;
+font-size: 30px;
+}
+.subtitleline {
+font-family: 'Marcellus', serif;
+font-size: 25px;
+}
+.subsub {
+font-family: 'Marcellus', serif;
+font-size: 18px;
+}
+
+.thumbnail {
+    position: relative;
+	margin-bottom:7px;
+    height: 400px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.thumbnail img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+
