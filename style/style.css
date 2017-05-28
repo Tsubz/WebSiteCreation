@@ -76,3 +76,26 @@ font-size: 18px;
           transform: translate(-50%,-50%);
 }
 
+/* crousel
+.carousel{
+  height: 200px;
+  margin:auto;
+}
+
+@media (min-width: 320px) {
+  .carousel,
+  .carousel .item,
+  .carousel .item-mask,
+  .carousel-inner .item .item-mask img {
+    height:200px;
+  }
+}
+
+@media (min-width: 768px) {
+  .carousel,
+  .carousel .item,
+  .carousel .item-mask,
+  .carousel-inner .item .item-mask img {
+    height:400px;
+  }
+}
