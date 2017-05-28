@@ -79,7 +79,7 @@ font-size: 18px;
 
 /* crousel*/
 .carousel{
-  height: 200px;
+  height: 500px;
   margin:auto;
 }
 
@@ -88,7 +88,7 @@ font-size: 18px;
   .carousel .item,
   .carousel .item-mask,
   .carousel-inner .item .item-mask img {
-    height:200px;
+  height:150px;
   }
 }
 
@@ -97,6 +97,6 @@ font-size: 18px;
   .carousel .item,
   .carousel .item-mask,
   .carousel-inner .item .item-mask img {
-    height:400px;
+   height:500px;
   }
 }
