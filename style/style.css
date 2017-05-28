@@ -78,14 +78,25 @@ font-size: 18px;
 }
 
 /* crousel*/
-
 .carousel{
   height: 200px;
   margin:auto;
-  width:100%;
 }
 
-.carousel.img  {
+@media (min-width: 320px) {
+  .carousel,
+  .carousel .item,
+  .carousel .item-mask,
+  .carousel-inner .item .item-mask img {
     height:200px;
-      width:100%;
-    }
+  }
+}
+
+@media (min-width: 768px) {
+  .carousel,
+  .carousel .item,
+  .carousel .item-mask,
+  .carousel-inner .item .item-mask img {
+    height:400px;
+  }
+}
