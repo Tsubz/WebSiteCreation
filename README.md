@@ -25,10 +25,3 @@ Alternate LOGO:
             </div>
           </div>
 <!-- Logo / Title END -->
-
-Copyrights dispay :
-
-Copyright 2013 Southern Web Group, LLC
-Copyright 2005-2013 Southern Web Group, LLC
-© 2013 Southern Web Group, LLC
-© 2005-2013 Southern Web Group, LLC
