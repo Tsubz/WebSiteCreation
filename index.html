@@ -4,43 +4,50 @@
     <!-- Basic head tags -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      
+    
+    <!-- JQuery tags before bootstrap -->
+    <script src="script/jquery-3.2.1.min.js"></script>
+
     <!-- Bootstrap tags -->
     <link href="style/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="style/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, userscalable=
 no">
-
-    <!-- JQuery tags -->
-    <script src="script/jquery-3.2.1.min.js"></script>
+    
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Marcellus|Montserrat+Subrayada|Poiret+One|Poppins|Roboto" rel="stylesheet">
 
     <!-- Own tags - Custom CSS - Custom Scripts -->
     <script src="script/script.js"></script>
-    <link href="style/style.css" rel="stylesheet">
+    <link href="style/style.css" rel="stylesheet"> 
+
+<!-- trial for carousel by light slider
+    <link type="text/css" rel="stylesheet" href="lights_src/css/lightslider.css" />  
+    <script src="lights_src/js/lightslider.js"></script>
+    <script type="text/javascript" src="test.js"></script>
+ -->
+
   </head>
   <body>
+<script>/*
     <header class="page_header">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-xs-0 col-md-2">
-          </div>
           <!-- Logo / Title -->
-          <div class="col-md-3 col-xs-12 col-md-push-7">
+          <div class="col-md-2 col-xs-12 col-md-offset-2 col-md-push-6">
             <div class="row">
             <div class="col-xs-4 col-md-4">
-            <h1 style="float: right; font-size: 50px; ">\\</h1>
+            <h1 style="float: right; font-size: 50px; margin-top: 30px;">\\</h1>
             </div>
             <div class="col-xs-8 col-md-8">
-            <h1 style="float: left;">Adeline <br>Betton</h1>
+            <h1 style="float: left;">Adeline<br>Betton</h1>
             </div>
             </div>
           </div>
-          <!-- Logo / Title END -->          
+          <!-- Logo / Title END -->
           <!-- Menu bar -->
-          <div class="col-xs-12 col-md-7 col-md-pull-3">
+          <div class="col-xs-12 col-md-6 col-md-pull-2">
             <ul class="menu_ul list-inline">
               <li class="menu_item">
                 \ About
@@ -61,12 +68,238 @@ no">
                 \ Admin
               </li>
             </ul>
+            <hr class="hr-menu"/>
           </div>
-          <!-- Menu bar END-->
-          
+          <!-- Menu bar END -->
         </div>
       </div>
     </header>
+ */</script>
 
+<!-- page title -->
+<div class="page-header">
+  <h1>   Adeline Betton <small> up-and-coming artist in Paris</small></h1>
+</div>
+
+  <!-- content navibar-->
+ <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> World of Adeline</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Artwork <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Select Work <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="www.asahi.com">latest</a></li>
+            <li><a href="www.nhk.co.jp">Another work</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Who draw this link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<script>/*    <!-- Content -->
+    <div id="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-12 col-md-8 col-md-offset-2"> <!-- Setting the container -->
+            <div class="row">
+              <div class="col-xs-12 col-md-6"> <!-- First content -->
+                <span class="titleline">Selected Work &#9679; 2017<br></span>
+      
+                <span class="subtitleline">Seaweed <span class="subsub">\ The council<br></span></span>
+                <div class="thumbnail">
+                  <img src="3.img/stars.png" class="img-responsive home-image" alt="Cloudy Sky"/>
+                </div>
+              </div> <!-- Cube end -->
+              
+              <div class="col-xs-12 col-md-6">
+                 <!-- Second content -->
+                <span class="titleline">Selected Work &#9679; 2017<br></span>
+      
+                <span class="subtitleline">Seaweed <span class="subsub">\ The council<br></span></span>
+                <div class="thumbnail">
+                  <img src="3.img/council.png" class="img-responsive home-image" alt="Cloudy Sky"/>
+                </div>
+              </div> <!-- Cube end -->
+            </div>
+          </div>
+        </div> <!-- div class row end -->
+      </div> <!-- Container end -->
+    </div>
+    <!-- Content END -->
+*/ </script>  
+    
+<div id="carousel-mainContents" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-mainContents" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-mainContents" data-slide-to="1"></li>
+    <li data-target="#carousel-mainContents" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="3.img/council.png" alt="C">
+      <div class="carousel-caption">
+        <h3>counsel</h3>
+        <p>counsel is always so much fun!</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="3.img/stars.png" alt="s">
+      <div class="carousel-caption">
+        <h3>stars</h3>
+        <p>Thank you</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="3.img/council.png" alt="cc">
+      <div class="carousel-caption">
+        <h3>cc</h3>
+        <p>again !</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Left and right controls -->
+<a class="left carousel-control" href="#carousel-mainContents" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-mainContents" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<!-- end of another ver of carousel-->
+<br>
+<br>
+ <!--contents sample-->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <div class="col-lg-4">
+          <img class="img-circle" src="3.img/Algues.png" alt="Generic placeholder image" width="140" height="140">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="3.img/claustra.png" alt="Generic placeholder image" width="140" height="140">
+          <h2>Heading</h2>
+          <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="3.img/stars.png" alt="Generic placeholder image" width="140" height="140">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
+
+<br>
+<br>
+
+      <!-- START THE FEATURETTES -->
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
+          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7 col-md-push-5">
+          <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
+          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5 col-md-pull-7">
+          <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <!-- /END THE FEATURETTES -->
+
+
+      <!-- FOOTER -->
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2016 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      </footer>
+
+    </div><!-- /.container -->
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   </body>
 </html>
