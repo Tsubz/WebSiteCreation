@@ -23,6 +23,7 @@
   "homepage": "https://github.com/Tsubz/WebSiteCreation#readme",
   "dependencies": {
     "express": "^4.15.2",
+    "express-handlebars": "^3.0.0",
     "mongodb": "^2.2.27"
   }
 }
