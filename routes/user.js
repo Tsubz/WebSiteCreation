@@ -7,18 +7,13 @@ var MongoClient = require('mongodb').MongoClient
 // Connection URL
 var url = 'mongodb://localhost:27017/adeline';
 
-//READ, UPDATE, DELETE users 
-router.get('/users', function(req, res) {
-      res.render('users', {Title:"users"});
-});
-
 
 /* INSERT user */
 router.post('/insert_user', function(req, res) {
  
       // Get POST values
       var userName = req.body.name;
-      var userSurname = req.surname;
+      var userSurname = req.body.surname;
       console.log('POST VALUES: ' + userName + ' ' + userSurname);
 
       // Fetch from 'users' collection
@@ -35,8 +30,8 @@ router.post('/insert_user', function(req, res) {
                   if(err) res.send('Problem occured when inserting in users collection');
                   else {
                         console.log("Inserted");
-                        res.location('users');
-                        res.redirect('/users');
+                        res.location('user');
+                        res.redirect('/user');
                   }
             });
 

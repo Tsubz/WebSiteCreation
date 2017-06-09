@@ -9,14 +9,22 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.use(express.static('files'));
 
-//Including stuff
+//MongoDB
+var MongoClient = require('mongodb').MongoClient
+  , assert = require('assert');
+ // Connection URL
+var url = 'mongodb://localhost:27017/adeline';
+
+//Including Routes
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var user = require('./routes/user');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/', routes);
-app.use('/users', users);
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use('/user', user);
+
 
 //jquery
 /*var jquery = require("jsdom").env("", function(err, window) {
@@ -33,12 +41,6 @@ var jsdom = require('jsdom').jsdom;
  var window = document.defaultView;
  var $ = require('jquery')(window); */
 
-var MongoClient = require('mongodb').MongoClient
-  , assert = require('assert');
-
-// Connection URL
-var url = 'mongodb://localhost:27017/adeline';
-
 /* //Mongo db accessible
 app.use(function(req,res,next){
     req.db = db;
@@ -54,20 +56,17 @@ MongoClient.connect(url, function(err, db) {
  //db.close();
 });*/
 
-/*
+
 // ADD TEST PAGE
-app.get('/add', function (req, res) {
-    res.render('add',{userName:"Marc-Antoine"});
+app.get('/user', function (req, res) {
+    res.render('user',{userName:"Marc-Antoine"});
 });
-*/
+
 
 /* Listen port */
 app.listen(3000, function () {
   console.log('Our app listening on port 3000!')
-})
-
-
-
+});
 
 
 
