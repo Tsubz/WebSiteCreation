@@ -2,6 +2,10 @@
 var express = require('express');
 var exphbs  = require('express-handlebars');
 var bodyParser = require('body-parser');
+var formidable = require('formidable');
+var fs = require('fs');
+var multer  = require('multer')
+var upload = multer({ dest: 'files/img' })
 
 var app = express()
 
@@ -25,7 +29,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', routes);
 app.use('/user', user);
 
-
 //jquery
 /*var jquery = require("jsdom").env("", function(err, window) {
     if (err) {
@@ -45,7 +48,7 @@ var jsdom = require('jsdom').jsdom;
 app.use(function(req,res,next){
     req.db = db;
     next();
-}); 
+});
 */
 
 /* Use connect method to connect to the server
@@ -64,8 +67,8 @@ app.get('/user', function (req, res) {
 
 
 /* Listen port */
-app.listen(3000, function () {
-  console.log('Our app listening on port 3000!')
+app.listen(1234, function () {
+  console.log('Our app listening on port 1234')
 });
 
 
@@ -86,6 +89,6 @@ app.get('/game/:playerchoice/', function (req, res) {
         gameResult:confrontation(serverPick,playerPick),
         gameHistory:recordHist(serverPick,playerPick),
     });
-    
+
 })
 */
