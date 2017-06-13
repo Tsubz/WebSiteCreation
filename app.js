@@ -76,7 +76,7 @@ app.get('/user', function(req, res) {
 
 /* Listen port */
 app.listen(1234, function() {
-  console.log('Our app listening on port 1234')
+  console.log('Our app listening on port 1234');
 });
 
 
