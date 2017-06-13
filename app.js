@@ -34,6 +34,6 @@ app.get('/game/:playerchoice/', function (req, res) {
 */
 
 /* Listen port */
-app.listen(3000, function () {
+app.listen(1234, function () {
   console.log('Our app listening on port 3000!')
 })
