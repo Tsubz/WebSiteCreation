@@ -24,6 +24,8 @@
 </div>
 
 -->
+
+<section class="get">
 <a href="user/get-data">LOAD DATA</a>
 <div class="row">
   <div class="col-md-12">
@@ -32,12 +34,13 @@
         <th>Server</th>
         <th>Player</th>
       </tr>
-      {{#each imgdata}}
+      {{# each imgdata}}
         <tr>
           <td>{{ this._id }}</td>
-          <td>{{ this.filename }}</td>
+          <td><img src="files/img/{{ this.filename }}" /></td>
         </tr>
       {{/each}}
     </table>
   </div>
 </div>
+</section>
