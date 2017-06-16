@@ -2,6 +2,7 @@ var express = require('express');
 var multer = require('multer');
 var assert = require('assert');
 var router = express.Router();
+var img_data = [];
 
 // Multer Storage Info //
 var storage = multer.diskStorage({
@@ -19,19 +20,34 @@ var url = 'mongodb://localhost:27017/adeline';
 var MongoClient = require('mongodb').MongoClient,
   assert = require('assert');
 
-  // TEST PAGE
-  router.get('/user', function(req, res) {
-    res.render('user', {
-      title1: 'User Page'
+  // ADMIN PAGE
+  router.get('/', function(req, res) {
+    MongoClient.connect(url, function(err, db) {
+      assert.equal(null, err);
+      console.log("Connected to DB");
+
+      var cursor = db.collection('try').find();
+      cursor.forEach(function(doc, err) {
+        assert.equal(null, err);
+        img_data.push(doc);
+      }, function() {
+        db.close();
+        console.log("DB Closed");
+
+    res.render('admin', {
+      title1: 'admin Page',
+      imgdata: img_data,
+      });
     });
   });
+});
 
 /* INSERT user */
 router.post('/upload_img', upload.single('exInputFile'), function(req, res) {
 
   console.log(req.file);
 
-  var file = req.file.originalname;
+  var file = '/img/'+req.file.originalname;
 
   // Inserting into database 'try' collection
   MongoClient.connect(url, function(err, db) {
@@ -46,34 +62,12 @@ router.post('/upload_img', upload.single('exInputFile'), function(req, res) {
       if (err) res.send('Problem occured when inserting in try collection');
       else {
         console.log("Inserted");
-        res.location('user');
-        res.redirect('/user');
+        res.location('admin');
+        res.redirect('/admin');
       }
     });
     // End of MongoDb Connection
     db.close();
-  });
-});
-
-router.get('/get-data', function(req, res, next) {
-  var img_data = [];
-
-  MongoClient.connect(url, function(err, db) {
-    assert.equal(null, err);
-    console.log("Connected to DB");
-
-    var cursor = db.collection('try').find();
-    cursor.forEach(function(doc, err) {
-      assert.equal(null, err);
-      img_data.push(doc);
-    }, function() {
-      db.close();
-      console.log("DB Closed");
-      res.render('user', {
-        userName: "Marc-Antoine",
-        imgdata: img_data,
-      });
-    });
   });
 });
 
