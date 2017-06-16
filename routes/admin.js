@@ -12,32 +12,34 @@ var storage = multer.diskStorage({
     cb(null, file.originalname);
   }
 });
-var upload = multer({storage: storage});
+var upload = multer({
+  storage: storage
+});
 
 // Connection URL
 var url = 'mongodb://localhost:27017/adeline';
 var MongoClient = require('mongodb').MongoClient,
   assert = require('assert');
 
-  // ADMIN PAGE
-  router.get('/', function(req, res) {
-    var img_data = [];
-    var pjcts = [];
-    MongoClient.connect(url, function(err, db) {
+// ADMIN PAGE
+router.get('/', function(req, res) {
+  var img_data = [];
+  var pjcts = [];
+  MongoClient.connect(url, function(err, db) {
+    assert.equal(null, err);
+    console.log("Connected to DB");
+
+    var img_cursor = db.collection('imgs').find();
+    var pj_cursor = db.collection('project').find();
+
+    img_cursor.forEach(function(doc, err) {
       assert.equal(null, err);
-      console.log("Connected to DB");
-
-      var img_cursor = db.collection('imgs').find();
-      var pj_cursor = db.collection('project').find();
-
-      img_cursor.forEach(function(doc, err) {
+      img_data.push(doc);
+    }, function() { //Callback function
+      pj_cursor.forEach(function(doc, err) {
         assert.equal(null, err);
-        img_data.push(doc);
-      }, function() { //Callback function
-        pj_cursor.forEach(function(doc, err) {
-          assert.equal(null, err);
-          pjcts.push(doc);
-        }, function() { //Second Callback
+        pjcts.push(doc);
+      }, function() { //Second Callback
 
         db.close();
         console.log("DB Closed");
@@ -47,8 +49,8 @@ var MongoClient = require('mongodb').MongoClient,
           imgdata: img_data,
           pjdata: pjcts,
         });
-    });
       });
+    });
   });
 });
 
@@ -57,9 +59,9 @@ router.post('/upload_img', upload.single('exInputFile'), function(req, res) {
 
   console.log(req.file);
 
-  var file = '/img/'+req.file.originalname;
+  var file = '/img/' + req.file.originalname;
 
-  // Inserting into database 'try' collection
+  // Inserting into database 'Imgs' collection
   MongoClient.connect(url, function(err, db) {
     assert.equal(null, err);
     console.log("Connected to add element");
@@ -69,7 +71,7 @@ router.post('/upload_img', upload.single('exInputFile'), function(req, res) {
     addImg.insert({
       'filename': file,
     }, function(err, doc) {
-      if (err) res.send('Problem occured when inserting in try collection');
+      if (err) res.send('Problem occured when inserting in imgs collection');
       else {
         console.log("Inserted");
         res.location('admin');
@@ -88,9 +90,9 @@ router.post('/addproject', function(req, res) {
   var projectname = req.body.projectname;
   var projectdesc = req.body.projectdesc;
 
- console.log('POST VALUES: ' + projectname + ' ' + projectdesc);
+  console.log('POST VALUES: ' + projectname + ' ' + projectdesc);
 
-  // Inserting into database 'try' collection
+  // Inserting into database 'Project' collection
   MongoClient.connect(url, function(err, db) {
     assert.equal(null, err);
     console.log("Connected to add element");
@@ -101,7 +103,7 @@ router.post('/addproject', function(req, res) {
       'projectname': projectname,
       'projectdesc': projectdesc,
     }, function(err, doc) {
-      if (err) res.send('Problem occured when inserting in try collection');
+      if (err) res.send('Problem occured when inserting in project collection');
       else {
         console.log("Inserted");
         res.location('admin');
@@ -113,5 +115,37 @@ router.post('/addproject', function(req, res) {
   });
 });
 
+
+/* Create Project */
+router.post('/checkboxes', function(req, res) {
+
+  // Get POST values
+  var checkimg = req.body.checkimg;
+  var projectname = req.body.selected;
+
+  console.log('POST VALUES: ' + checkimg);
+
+  // Inserting into database 'img_pj' collection
+  MongoClient.connect(url, function(err, db) {
+    assert.equal(null, err);
+    console.log("Connected to add element");
+
+    var img_pj = db.collection("img_pj");
+
+    img_pj.insert({
+      'projectname': projectname,
+      'projectimgs': checkimg,
+    }, function(err, doc) {
+      if (err) res.send('Problem occured when inserting in img_pj collection');
+      else {
+        console.log("Inserted");
+        res.location('admin');
+        res.redirect('/admin');
+      }
+    });
+    // End of MongoDb Connection
+    db.close();
+  });
+});
 
 module.exports = router;

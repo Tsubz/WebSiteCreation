@@ -30,10 +30,18 @@ h3, h4 {
 }
  */
 
-
+/**** ADMIN CSS ****/
 .thumb {
     margin-bottom: 30px;
 }
+
+.check
+{
+  opacity:0.5;
+	color:#996;
+
+}
+/**** ADMIN CSS END ****/
 
 .menu_ul {
     margin-top: 30px;
