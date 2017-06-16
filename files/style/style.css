@@ -29,6 +29,9 @@ h3, h4 {
  .page_header, {
 }
  */
+.page-header{
+  margin:3vw;  
+}
 
 .menu_ul {
     margin-top: 30px;
@@ -80,7 +83,7 @@ font-size: 18px;
 /* crousel*/
 .carousel{
   height: 500px;
-  margin:auto;
+  margin:3vw;
 }
 
 @media (min-width: 320px) {
