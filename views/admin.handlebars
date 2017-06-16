@@ -1,17 +1,43 @@
-<div>New User</div>
+<!DOCTYPE html>
 
-<form name="addfile" method="post" action="user/upload_img" enctype="multipart/form-data">
-  <div class="form-group">
-    <label for="exInputFile">exInputFile</label>
-    <input type="file" name="exInputFile">
-    <p>
-      single file upload
-    </p>
-  </div>
+<section id="upload-imgs">
+  <h2>
+    Upload an image
+  </h2>
 
-  <button type="submit" name="submit" class="btn btn-default">Submit</button>
-</form>
+  <form name="addfile" method="post" action="admin/upload_img" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="exInputFile">Choose a file</label>
+      <input type="file" name="exInputFile">
+      <p>single file upload</p>
+    </div>
 
+    <button type="submit" name="submit" class="btn btn-default">Submit</button>
+  </form>
+
+</section>
+
+<hr />
+
+<section id="create-project">
+  <h2>
+    Create a new project
+  </h2>
+  <form name="addproject" method="post" action="admin/addproject">
+    <div class="form-group">
+      <label for="projectname">Project Name</label>
+      <input type="text" name="projectname" class="form-control" placeholder="Project Name">
+    </div>
+    <div class="form-group">
+      <label for="projectdesc">Project Description</label>
+      <textarea class="form-control" rows ="10" name="projectdesc" placeholder="Your description here"></textarea>
+    </div>
+
+    <button type="submit" name="submit" class="btn btn-default">Create project</button>
+  </form>
+</section>
+
+<hr />
 <!--
 
 <div class="form-group">
@@ -25,22 +51,42 @@
 
 -->
 
-<section class="get">
-<div class="row">
-  <div class="col-md-12">
-    <table class="table-bordered">
-      <tr>
-        <th>Server</th>
-        <th>Player</th>
-      </tr>
-      {{# each imgdata}}
-        <tr>
-          <td>{{ this._id }}</td>
-          <td>{{ this.filename }}</td>
-          <td><img src="{{ this.filename }}"></td>
-        </tr>
-      {{/each}}
-    </table>
+<section id="pjct">
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-lg-12">
+        <h1 class="page-header">project Gallery</h1>
+      </div>
+      {{# each pjdata}}
+      <div class="col-lg-3 col-md-4 col-xs-6">
+        <p>
+          {{this.projectname}}<br />
+          {{this.projectdesc}}<br />
+        </p>
+      </div>
+       {{/each}}
+    </div>
   </div>
-</div>
+</section>
+
+<hr />
+
+<section id="thumb-section">
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-lg-12">
+        <h1 class="page-header">Thumbnail Gallery</h1>
+      </div>
+      {{# each imgdata}}
+      <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+        <a class="thumbnail" href="#">
+                    <img class="img-responsive" src="{{ this.filename }}" alt="">
+                </a>
+      </div>
+       {{/each}}
+    </div>
+  </div>
+
 </section>

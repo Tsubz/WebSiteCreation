@@ -1,6 +1,7 @@
 /* Initialization */
 var express = require('express');
 var exphbs = require('express-handlebars');
+var bodyParser = require('body-parser');
 var multer = require('multer');
 var assert = require('assert');
 var path = require('path');
@@ -14,6 +15,10 @@ app.engine('handlebars', exphbs({
 }));
 app.set('view engine', 'handlebars');
 app.use(express.static(path.join(__dirname, 'files')));
+
+// Body Parser form static forms
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //MongoDB
 var MongoClient = require('mongodb').MongoClient,
