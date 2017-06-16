@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<script src="/script/adminscript.js"></script>
+
+<section id="upload-imgs">
+  <h2>
+    Upload an image
+  </h2>
+
+  <form name="addfile" method="post" action="admin/upload_img" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="exInputFile">Choose a file</label>
+      <input type="file" name="exInputFile" multiple>
+      <p>single file upload</p>
+    </div>
+
+    <button type="submit" name="submit" class="btn btn-default">Submit</button>
+  </form>
+</section>
+
+<hr />
+
+<div class="container">
+	<div class="row">
+		<form method="POST" action="admin/checkboxes">
+      <select name="selected">
+        {{# each pjdata}}
+          <option value="{{this.projectname}}">{{this.projectname}}</option>
+         {{/each}}
+      </select>
+		<div class="form-group">
+      {{# each imgdata}}
+        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+          <label class="btn btn-primary thumbnail"><img src="{{ this.filename }}" alt="..." class="img-check"><input type="checkbox" name="checkimg" class="hidden" autocomplete="off" value="{{ this.filename }}"></label>
+        </div>
+       {{/each}}
+		</div>
+		<input type="submit" value="Check Item" class="btn btn-success">
+		</form>
+	</div>
+</div>
+
+<section id="create-project">
+  <h2>
+    Create a new project
+  </h2>
+  <form name="addproject" method="post" action="admin/addproject">
+    <div class="form-group">
+      <label for="projectname">Project Name</label>
+      <input type="text" name="projectname" class="form-control" placeholder="Project Name">
+    </div>
+    <div class="form-group">
+      <label for="projectdesc">Project Description</label>
+      <textarea class="form-control" rows ="10" name="projectdesc" placeholder="Your description here"></textarea>
+    </div>
+
+    <button type="submit" name="submit" class="btn btn-default">Create project</button>
+  </form>
+</section>
+
+<hr />
+<!--
+
+<div class="form-group">
+  <label for="name">name</label>
+  <input type="text" name="name" class="form-control" placeholder="Name">
+</div>
+<div class="form-group">
+  <label for="surname">surname</label>
+  <input type="text" name="surname" class="form-control" placeholder="Surname">
+</div>
+
+-->
+
+<section id="pjct">
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-lg-12">
+        <h1 class="page-header">project Gallery</h1>
+      </div>
+      {{# each pjdata}}
+      <div class="col-lg-3 col-md-4 col-xs-6">
+        <p>
+          {{this.projectname}}<br />
+          {{this.projectdesc}}<br />
+        </p>
+      </div>
+       {{/each}}
+    </div>
+  </div>
+</section>
+
+<hr />
+
+<section id="thumb-section">
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-lg-12">
+        <h1 class="page-header">Thumbnail Gallery</h1>
+      </div>
+      {{# each imgdata}}
+      <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+        <a class="thumbnail" href="#">
+                    <img class="img-responsive" src="{{ this.filename }}" alt="">
+                </a>
+      </div>
+       {{/each}}
+    </div>
+  </div>
+
+</section>
