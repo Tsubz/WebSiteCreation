@@ -39,7 +39,7 @@ router.get('/', function(req, res) {
       pj_cursor.forEach(function(doc, err) {
         assert.equal(null, err);
         pjcts.push(doc);
-      }, function() { //Second Callback
+      }, function() { //Second Callback inside first Callback
 
         db.close();
         console.log("DB Closed");
@@ -54,22 +54,23 @@ router.get('/', function(req, res) {
   });
 });
 
-/* Upload Image */
-router.post('/upload_img', upload.single('exInputFile'), function(req, res) {
-
-  console.log(req.file);
-
-  var file = '/img/' + req.file.originalname;
+/* Upload Image -- single('exInputFile')*/
+router.post('/upload_img', upload.any(), function(req, res) {
 
   // Inserting into database 'Imgs' collection
   MongoClient.connect(url, function(err, db) {
     assert.equal(null, err);
     console.log("Connected to add element");
-
     var addImg = db.collection("imgs");
 
-    addImg.insert({
-      'filename': file,
+    var file;
+    for (var i=0; i < req.files.length; i++) {
+      console.log(req.files[i].originalname);
+      file = '/img/' + req.files[i].originalname;
+
+      addImg.insert({
+        'filename': file,
+      })
     }, function(err, doc) {
       if (err) res.send('Problem occured when inserting in imgs collection');
       else {
@@ -80,7 +81,7 @@ router.post('/upload_img', upload.single('exInputFile'), function(req, res) {
     });
     // End of MongoDb Connection
     db.close();
-  });
+  });*/
 });
 
 /* Create Project */
