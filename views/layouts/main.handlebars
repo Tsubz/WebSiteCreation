@@ -23,35 +23,27 @@ no">
   <link href="/style/style.css" rel="stylesheet">
 
   <title>{{pagetitle}}</title>
-  <!-- trial for carousel by light slider
-    <link type="text/css" rel="stylesheet" href="lights_src/css/lightslider.css" />
-    <script src="lights_src/js/lightslider.js"></script>
-    <script type="text/javascript" src="test.js"></script>
- -->
 
 </head>
 
 <body>
 
-  <!-- page title -->
-
-  <!-- content navibar-->
+  <!-- content navibar in Header-->
   <div class="container-fluid">
     {{> header}}
   </div>
-  <!-- /.container-fluid -->
 
-<div class="container-fluid">
+  <div class="container-fluid">
     {{{body}}}
-</div>
+  </div>
 
-      <!-- FOOTER -->
-   <div class="container-fluid">
-     {{> footer}}
-    </div><!-- /.container -->
-  <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  </body>
+  <!-- FOOTER -->
+  <div class="container-fluid">
+    {{> footer}}
+  </div>
+
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</body>
+
 </html>
