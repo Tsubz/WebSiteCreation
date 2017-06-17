@@ -70,18 +70,18 @@ router.post('/upload_img', upload.any(), function(req, res) {
 
       addImg.insert({
         'filename': file,
-      })
-    }, function(err, doc) {
-      if (err) res.send('Problem occured when inserting in imgs collection');
-      else {
-        console.log("Inserted");
-        res.location('admin');
-        res.redirect('/admin');
-      }
-    });
+      }/*, function(err, doc) {
+        if (err) res.send('Problem occured when inserting in imgs collection');
+        else {
+          console.log("Inserted"); }
+        }*/);
+    }
+    res.location('admin');
+    res.redirect('/admin');
     // End of MongoDb Connection
     db.close();
-  });*/
+    //console.log("upload DB Closed");
+  });
 });
 
 /* Create Project */
