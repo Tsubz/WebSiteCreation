@@ -101,7 +101,6 @@ router.post('/addproject', function(req, res) {
 
 /* Create Project */
 router.post('/checkboxes', function(req, res) {
-
   // Get POST values
   var projectname = req.body.selected;
   var checkimg = req.body.checkimg;
@@ -110,22 +109,36 @@ router.post('/checkboxes', function(req, res) {
   console.log('POST VALUES: ' + checkimg);
   console.log('FEATURED: ' + featuredimg);
 
-  // Removing the 
-
-  // Inserting into database 'img_pj' collection
-  var img_pj = db.get().collection("img_pj");
-
-  img_pj.insert({
-    'projectname': projectname,
-    'projectimgs': checkimg,
-  }, function(err, doc) {
-    if (err) res.send('Problem occured when inserting in img_pj collection');
-    else {
-      console.log("Inserted");
-      res.location('admin');
-      res.redirect('/admin');
+  //Calling "if" to check if featuredimg is string or Array (incorrect)
+  if (featuredimg.constructor === Array) {
+    console.log("Two featured checkboxes were selected, nothing happened");
+    res.location('admin');
+    res.redirect('/admin');
+  }
+  else {
+    // Removing the featured element from list of images
+    var i = checkimg.indexOf(featuredimg);
+    console.log(i);
+    if(i != -1) {
+    	checkimg.splice(i, 1);
     }
-  });
+
+    // Inserting into database 'img_pj' collection
+    var img_pj = db.get().collection("img_pj");
+
+    img_pj.insert({
+      'projectname': projectname,
+      'projectimgs': checkimg,
+      'featuredimg': featuredimg,
+    }, function(err, doc) {
+      if (err) res.send('Problem occured when inserting in img_pj collection');
+      else {
+        console.log("Inserted");
+        res.location('admin');
+        res.redirect('/admin');
+      }
+    });
+  }
 });
 
 module.exports = router;
