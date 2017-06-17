@@ -45,7 +45,7 @@ router.get('/', function(req, res) {
     ],
     function(err, results) {
       res.render('admin', {
-        title1: 'admin Page',
+        pagetitle: 'admin Page',
         imgdata: img_data,
         pjdata: pjcts,
       });
