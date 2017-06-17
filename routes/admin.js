@@ -103,10 +103,14 @@ router.post('/addproject', function(req, res) {
 router.post('/checkboxes', function(req, res) {
 
   // Get POST values
-  var checkimg = req.body.checkimg;
   var projectname = req.body.selected;
+  var checkimg = req.body.checkimg;
+  var featuredimg = req.body.featuredimg;
 
   console.log('POST VALUES: ' + checkimg);
+  console.log('FEATURED: ' + featuredimg);
+
+  // Removing the 
 
   // Inserting into database 'img_pj' collection
   var img_pj = db.get().collection("img_pj");

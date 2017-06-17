@@ -30,12 +30,12 @@ h3, h4 {
 }
  */
 .page-header{
-  margin:3vw;  
+  margin:3vw;
 }
 
 /**** ADMIN CSS ****/
 .thumb {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .check
@@ -43,6 +43,11 @@ h3, h4 {
   opacity:0.5;
 	color:#996;
 
+}
+
+.checkFeatured{
+float:left;
+clear: left;
 }
 /**** ADMIN CSS END ****/
 
