@@ -1,0 +1,28 @@
+.contents {
+    max-width: 990px;
+    margin: 0 auto;
+}
+
+.content-primary,
+.content-secondary {
+    padding-left: 0;
+    padding-right: 0;
+}
+.content-primary {
+    float: left;
+    width: 52.08%;
+}
+.content-secondary {
+    float: right;
+    width: 37.92%;
+}
+.description {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.description .lead {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    font-family: "Myriad Pro", serif;
+    font-size: 26px;
+}
