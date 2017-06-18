@@ -1,12 +1,30 @@
 var express = require('express');
+var assert = require('assert');
+var async = require("async");
+var db = require('../helpers/db');
 var router = express.Router();
 
-/* GET home page. */
-
+/* Home Page / retrieving project names */
 router.get('/', function(req, res) {
-  res.render('home', {
-    title1: 'Home Now'
-  });
+  var pjcts = [];
+  var pj_cursor = db.get().collection('project').find();
+
+  async.parallel(
+    [
+      function(cb) {
+        pj_cursor.forEach(function(doc, err) {
+          assert.equal(null, err);
+          pjcts.push(doc);
+        }, cb);
+      }
+    ],
+    function(err, results) {
+      res.render('index', {
+        pagetitle: 'Adeline Betton',
+        pjdata: pjcts,
+      });
+    }
+  );
 });
 
 module.exports = router;
