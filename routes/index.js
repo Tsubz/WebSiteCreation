@@ -1,4 +1,5 @@
 var express = require('express');
+var assert = require('assert');
 var async = require("async");
 var db = require('../helpers/db');
 var router = express.Router();
@@ -18,7 +19,7 @@ router.get('/', function(req, res) {
       }
     ],
     function(err, results) {
-      res.render('home', {
+      res.render('index', {
         pagetitle: 'Adeline Betton',
         pjdata: pjcts,
       });

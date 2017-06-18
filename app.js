@@ -20,18 +20,14 @@ app.use(express.static(path.join(__dirname, 'files')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
-app.get('/', function (req, res) {
-    res.render('home',{userName:"Marc-Antoine"});
-});
-
 //Including Routes
 var routes = require('./routes/index');
 var admin = require('./routes/admin');
+var project = require('./routes/project');
 
 app.use('/', routes);
 app.use('/admin', admin);
-
+app.use('/project', project);
 
 // Connect to Mongo on start
 db.connect(url, function(err) {

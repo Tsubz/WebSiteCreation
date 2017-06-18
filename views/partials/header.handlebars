@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <div class="page-header">
-  <h1>   Adeline Betton <small> up-and-coming artist in Paris</small></h1>
+  <h1>Adeline Betton <small> up-and-coming artist in Paris</small></h1>
 </div>
 
 <nav class="navbar navbar-default">
@@ -26,13 +26,9 @@
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Select Work <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="www.asahi.com">latest</a></li>
-          <li><a href="www.nhk.co.jp">Another work</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="#">One more separated link</a></li>
+          {{# each pjdata}}
+            <li><a href="/project/{{this.projectname}}">{{this.projectname}}</a></li>
+           {{/each}}
         </ul>
       </li>
     </ul>
