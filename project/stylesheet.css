@@ -26,3 +26,13 @@
     font-family: "Myriad Pro", serif;
     font-size: 26px;
 }
+.feature-image {
+    margin-bottom: 26px;
+}
+.feature-image .image {
+    float: left;
+    width: 45.6%;
+}
+.feature-image .image:nth-child(even) {
+    float: right;
+}
