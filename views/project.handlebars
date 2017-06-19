@@ -5,15 +5,19 @@
     <h3>{{projectname}}</h3>
     {{#with images.[0]}}
       <img src="{{this.featuredimg}}" class="img-responsive" alt="image">
-      {{# each this.projectimgs}}
-        <div class="image"><img src="{{this}}" alt="Photo1" class="img-responsive"></div>
-        {{/each}}
+      <div class="row">
+        {{# each this.projectimgs}}
+        <div class="col-lg-4 col-md-4 col-xs-6">
+          <div class="image"><img src="{{this}}" alt="Photo1" class="img-responsive"></div>
+        </div>
+          {{/each}}
+      </div>
     {{/with}}
   </div>
   <div class="content-secondary">
     <div class="description">
-      <p>
-        {{pjct_desc}}
+      <p class="flow-text">
+        {{{pjct_desc}}}
       </p>
     </div>
   </div>

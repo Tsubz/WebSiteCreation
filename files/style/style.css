@@ -17,13 +17,15 @@ h1 {
     font-family: 'Poppins', sans-serif;
 }
 
-h2 {
+h2, h3 {
     font-family: 'Marcellus', serif;
 }
 
-h3, h4 {
+/**
+h3 {
     font-family: 'Montserrat Subrayada', sans-serif;
 }
+**/
 
  /*No style
  .page_header, {
@@ -82,10 +84,13 @@ clear: left;
 }
 .feature-image {
     margin-bottom: 26px;
-}
-.feature-image .image {
     float: left;
     width: 45.6%;
+}
+
+.image {
+      margin-top: 13px;
+      margin-bottom: 13px;
 }
 .feature-image .image:nth-child(even) {
     float: right;
