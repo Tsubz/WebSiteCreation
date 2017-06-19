@@ -6,7 +6,7 @@
     {{#with images.[0]}}
       <img src="{{this.featuredimg}}" class="img-responsive" alt="image">
       {{# each this.projectimgs}}
-        <img src="{{this}}" class="img-responsive" alt="image">
+        <div class="image"><img src="{{this}}" alt="Photo1" class="img-responsive"></div>
         {{/each}}
     {{/with}}
   </div>
