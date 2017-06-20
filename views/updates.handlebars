@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<script src="/script/adminscript.js"></script>
+
+<!-- Update project -->
+<section id="removePj">
+  <h2>
+    Delete project
+  </h2>
+
+  <form name="removeProject" method="post" action="updates/removeProject">
+    <select name="selected">
+    {{# each pjdata}}
+      <option value="{{this.projectname}}">{{this.projectname}}</option>
+     {{/each}}
+    </select>
+    <button type="submit" name="submit" class="btn btn-default">Remove this project</button>
+  </form>
+</section>
+
+<hr />
+
+<!-- Update project -->
+<section id="unbindImgPj">
+  <h2>
+    unbind images and project
+  </h2>
+
+  <form name="unbindImages" method="post" action="updates/unbindImages">
+    <select name="selected">
+    {{# each pjdata}}
+      <option value="{{this.projectname}}">{{this.projectname}}</option>
+     {{/each}}
+    </select>
+    <button type="submit" name="submit" class="btn btn-default">Unbind Images from this project</button>
+  </form>
+</section>
+
+<hr />
+
+<!-- Remove Images -->
+<section id="removeImagges">
+  <h2>
+    unbind images and project
+  </h2>
+
+  <form name="deleteImages" method="post" action="updates/deleteImages">
+    <div class="form-group">
+      {{# each imgdata}}
+        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+          <div class="display_img">
+            <label class="btn btn-primary thumbnail">
+              <img src="{{ this.filename }}" alt="..." class="img-check">
+              <input type="checkbox" name="checkimg" class="hidden" autocomplete="off" value="{{ this.filename }}">
+            </label>
+          </div>
+        </div>
+        {{/each}}
+    </div>
+    <div class="form-group">
+      <button type="submit" name="submit" class="btn btn-default">Delete Images</button>
+    </div>
+  </form>
+</section>
+
+<hr />

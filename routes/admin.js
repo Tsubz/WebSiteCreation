@@ -99,7 +99,7 @@ router.post('/addproject', function(req, res) {
 });
 
 
-/* Create Project */
+/* Associate images with project */
 router.post('/checkboxes', function(req, res) {
   // Get POST values
   var projectname = req.body.selected;
@@ -109,8 +109,25 @@ router.post('/checkboxes', function(req, res) {
   console.log('POST VALUES: ' + checkimg);
   console.log('FEATURED: ' + featuredimg);
 
+  if (typeof featuredimg === 'undefined') {
+    // Inserting into database 'img_pj' collection
+    var img_pj = db.get().collection("img_pj");
+
+    img_pj.insert({
+      'projectname': projectname,
+      'projectimgs': checkimg,
+      'featuredimg': featuredimg,
+    }, function(err, doc) {
+      if (err) res.send('Problem occured when inserting in img_pj collection');
+      else {
+        console.log("Inserted");
+        res.location('admin');
+        res.redirect('/admin');
+      }
+    });
+  }
   //Calling "if" to check if featuredimg is string or Array (incorrect)
-  if (featuredimg.constructor === Array) {
+  else if (featuredimg.constructor === Array) {
     console.log("Two featured checkboxes were selected, nothing happened");
     res.location('admin');
     res.redirect('/admin');

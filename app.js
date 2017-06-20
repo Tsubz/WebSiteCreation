@@ -9,6 +9,7 @@ var path = require('path');
 var db = require('./helpers/db');
 // Connection URL
 var url = 'mongodb://localhost:27017/adeline';
+//var url = 'mongodb://essec:cergyisc00l@138.68.110.210:27017/admin?readPreference=primary';//
 
 var app = express();
 
@@ -23,10 +24,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //Including Routes
 var routes = require('./routes/index');
 var admin = require('./routes/admin');
+var updates = require('./routes/updates');
 var project = require('./routes/project');
 
 app.use('/', routes);
 app.use('/admin', admin);
+app.use('/updates', updates);
 app.use('/project', project);
 
 // Connect to Mongo on start
