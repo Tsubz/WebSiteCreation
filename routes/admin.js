@@ -4,6 +4,7 @@ var assert = require('assert');
 var router = express.Router();
 var async = require("async");
 var db = require('../helpers/db');
+var path = require('path');
 
 // Multer Storage Info //
 var storage = multer.diskStorage({
@@ -15,7 +16,18 @@ var storage = multer.diskStorage({
   }
 });
 var upload = multer({
-  storage: storage
+  storage: storage,
+  fileFilter: function (req, file, cb) {
+
+  var filetypes = /jpeg|jpg|png/;
+  var mimetype = filetypes.test(file.mimetype);
+  var extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+
+  if (mimetype && extname) {
+    return cb(null, true);
+  }
+  cb("Error: File upload only supports the following filetypes - " + filetypes);
+}
 });
 
 //var MongoClient = require('mongodb').MongoClient;
@@ -106,13 +118,17 @@ router.post('/checkboxes', function(req, res) {
   var checkimg = req.body.checkimg;
   var featuredimg = req.body.featuredimg;
 
+  if (checkimg.constructor !== Array) {
+    checkimg = [checkimg];
+  }
+
   console.log('POST VALUES: ' + checkimg);
   console.log('FEATURED: ' + featuredimg);
 
-  if (typeof featuredimg === 'undefined') {
-    // Inserting into database 'img_pj' collection
-    var img_pj = db.get().collection("img_pj");
+  // Inserting into database 'img_pj' collection
+  var img_pj = db.get().collection("img_pj");
 
+  if (typeof featuredimg === 'undefined') {
     img_pj.insert({
       'projectname': projectname,
       'projectimgs': checkimg,
@@ -141,8 +157,6 @@ router.post('/checkboxes', function(req, res) {
     }
 
     // Inserting into database 'img_pj' collection
-    var img_pj = db.get().collection("img_pj");
-
     img_pj.insert({
       'projectname': projectname,
       'projectimgs': checkimg,
