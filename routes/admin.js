@@ -65,7 +65,7 @@ router.get('/', function(req, res) {
   );
 });
 
-/* Upload Image -- single('exInputFile')*/
+/* Upload Images */
 router.post('/upload_img', upload.any(), function(req, res) {
 
   // Inserting into database 'Imgs' collection
@@ -77,9 +77,11 @@ router.post('/upload_img', upload.any(), function(req, res) {
     console.log(req.files[i].originalname);
     file = '/img/' + req.files[i].originalname;
 
-    addImg.insert({
+    addImg.update({
       'filename': file,
-    });
+    }, {
+      'filename': file,
+    }, {upsert : true});
   }
   res.location('admin');
   res.redirect('/admin');
@@ -97,10 +99,10 @@ router.post('/addproject', function(req, res) {
   // Inserting into database 'Project' collection
   var addProject = db.get().collection("project");
 
-  addProject.insert({
+  addProject.update({'projectname': projectname}, {
     'projectname': projectname,
     'projectdesc': projectdesc,
-  }, function(err, doc) {
+  }, {upsert : true}, function(err, doc) {
     if (err) res.send('Problem occured when inserting in project collection');
     else {
       console.log("Inserted");
@@ -129,11 +131,11 @@ router.post('/checkboxes', function(req, res) {
   var img_pj = db.get().collection("img_pj");
 
   if (typeof featuredimg === 'undefined') {
-    img_pj.insert({
+    img_pj.update({'projectname': projectname},{
       'projectname': projectname,
       'projectimgs': checkimg,
       'featuredimg': featuredimg,
-    }, function(err, doc) {
+    }, {upsert : true}, function(err, doc) {
       if (err) res.send('Problem occured when inserting in img_pj collection');
       else {
         console.log("Inserted");
@@ -157,11 +159,11 @@ router.post('/checkboxes', function(req, res) {
     }
 
     // Inserting into database 'img_pj' collection
-    img_pj.insert({
+    img_pj.update({'projectname': projectname},{
       'projectname': projectname,
       'projectimgs': checkimg,
       'featuredimg': featuredimg,
-    }, function(err, doc) {
+    }, {upsert : true}, function(err, doc) {
       if (err) res.send('Problem occured when inserting in img_pj collection');
       else {
         console.log("Inserted");
