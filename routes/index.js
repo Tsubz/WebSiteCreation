@@ -7,7 +7,7 @@ var router = express.Router();
 /* Home Page / retrieving project names */
 router.get('/', function(req, res) {
   var pjcts = [];
-  var pj_cursor = db.get().collection('project').find();
+  var pj_cursor = db.get().collection('ade_project').find();
 
   async.parallel(
     [

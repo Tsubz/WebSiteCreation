@@ -12,11 +12,11 @@ router.get('/:projectname/', function(req, res) {
   var pjct_desc = '';
   var projectname = req.params.projectname;
 
-  var pj_cursor = db.get().collection('project').find();
-  var pj_desc_cursor = db.get().collection('project').find({
+  var pj_cursor = db.get().collection('ade_project').find();
+  var pj_desc_cursor = db.get().collection('ade_project').find({
     'projectname': projectname
   });
-  var pj_img_cursor = db.get().collection('img_pj').find({
+  var pj_img_cursor = db.get().collection('ade_img_pj').find({
     'projectname': projectname
   });
 

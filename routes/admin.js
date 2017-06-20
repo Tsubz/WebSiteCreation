@@ -37,8 +37,8 @@ router.get('/', function(req, res) {
   var img_data = [];
   var pjcts = [];
 
-  var img_cursor = db.get().collection('imgs').find();
-  var pj_cursor = db.get().collection('project').find();
+  var img_cursor = db.get().collection('ade_imgs').find();
+  var pj_cursor = db.get().collection('ade_project').find();
 
   async.parallel(
     [
@@ -70,7 +70,7 @@ router.post('/upload_img', upload.any(), function(req, res) {
 
   // Inserting into database 'Imgs' collection
 
-  var addImg = db.get().collection("imgs");
+  var addImg = db.get().collection("ade_imgs");
 
   var file;
   for (var i = 0; i < req.files.length; i++) {
@@ -97,7 +97,7 @@ router.post('/addproject', function(req, res) {
   console.log('POST VALUES: ' + projectname + ' ' + projectdesc);
 
   // Inserting into database 'Project' collection
-  var addProject = db.get().collection("project");
+  var addProject = db.get().collection("ade_project");
 
   addProject.update({'projectname': projectname}, {
     'projectname': projectname,
@@ -128,7 +128,7 @@ router.post('/checkboxes', function(req, res) {
   console.log('FEATURED: ' + featuredimg);
 
   // Inserting into database 'img_pj' collection
-  var img_pj = db.get().collection("img_pj");
+  var img_pj = db.get().collection("ade_img_pj");
 
   if (typeof featuredimg === 'undefined') {
     img_pj.update({'projectname': projectname},{

@@ -9,8 +9,8 @@ router.get('/', function(req, res) {
   var img_data = [];
   var pjcts = [];
 
-  var img_cursor = db.get().collection('imgs').find();
-  var pj_cursor = db.get().collection('project').find();
+  var img_cursor = db.get().collection('ade_imgs').find();
+  var pj_cursor = db.get().collection('ade_project').find();
 
   async.parallel(
     [
@@ -44,7 +44,7 @@ router.post('/removeProject', function(req, res) {
 
     // Inserting into database 'img_pj' collection
 
-    db.get().collection("project").remove({'projectname': projectname}, function(err, doc) {
+    db.get().collection("ade_project").remove({'projectname': projectname}, function(err, doc) {
     if (err) throw err;
         console.log("Deleted");
         res.location('updates');
@@ -58,7 +58,7 @@ router.post('/unbindImages', function(req, res) {
 
   // Inserting into database 'img_pj' collection
 
-  db.get().collection("img_pj").remove({
+  db.get().collection("ade_img_pj").remove({
     'projectname': projectname
   }, function(err, doc) {
     if (err) throw err;
@@ -76,7 +76,7 @@ router.post('/deleteImages', function(req, res) {
   console.log('POST VALUES: ' + checkimg);
 
 if (checkimg.constructor !== Array) {
-  db.get().collection("imgs").remove({
+  db.get().collection("ade_imgs").remove({
     'filename': checkimg
   }, function(err, doc) {
     if (err) throw err;
@@ -92,7 +92,7 @@ else {
         for (var i = 0; i < checkimg.length; i++) {
           console.log(checkimg[i]);
 
-          db.get().collection("imgs").remove({
+          db.get().collection("ade_imgs").remove({
             'filename': checkimg[i]
           });
           console.log("Deleted");
